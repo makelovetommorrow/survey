@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-22 15:22:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.atguigu.survey.entities.manager">
+    <class name="Admin" table="MANAGER_ADMIN">
+        <id name="adminId" type="java.lang.Integer">
+            <column name="ADMIN_ID" />
+            <generator class="native" />
+        </id>
+        <property name="adminName" type="java.lang.String">
+            <column name="ADMIN_NAME" />
+        </property>
+        <property name="adminPwd" type="java.lang.String">
+            <column name="ADMIN_PWD" />
+        </property>
+        <property name="codeArrStr" type="string">
+        	<column name="CODE_ARR_STR"/>
+        </property>
+        <set name="roleSet" table="INNER_ADMIN_ROLE">
+        	<key>
+        		<column name="ADMIN_ID"/>
+        	</key>
+        	<many-to-many class="Role" column="ROLE_ID"/>
+        </set>
+    </class>
+</hibernate-mapping>

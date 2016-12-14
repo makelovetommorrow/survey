@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-15 15:36:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.atguigu.survey.entities.guest.User" table="GUEST_USER">
+		<id name="userId" type="java.lang.Integer">
+			<column name="USER_ID" />
+			<generator class="native" />
+		</id>
+		<property name="userName" type="java.lang.String">
+			<column name="USER_NAME" />
+		</property>
+		<!-- java.lang.String是一个Java类型 -->
+		<!-- string是Hibernate映射类型 -->
+		<!-- String既不是Java类型，又不是Hibernate映射类型 -->
+		<property name="userPwd" type="string">
+			<column name="USER_PWD" />
+		</property>
+		<property name="company" type="boolean">
+			<column name="COMPANY" />
+		</property>
+		<property name="codeArrStr" type="string">
+			<column name="CODE_ARR_STR"/>
+		</property>
+		<set name="roleSet" table="INNER_USER_ROLE">
+			<key column="USER_ID"/>
+			<many-to-many class="com.atguigu.survey.entities.manager.Role" column="ROLE_ID"/>
+		</set>
+	</class>
+</hibernate-mapping>
